@@ -58,3 +58,392 @@ header h1 {
 }
 
 .tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.tab.active {
+    background: linear-gradient(135deg, #5eead4 0%, #2dd4bf 100%);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #14b8a6;
+}
+
+.search-box button {
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #5eead4 0%, #2dd4bf 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s;
+}
+
+.search-box button:hover {
+    background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+    transform: translateY(-2px);
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filters select {
+    flex: 1;
+    min-width: 180px;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1em;
+    background: white;
+    cursor: pointer;
+}
+
+.filters select:focus {
+    outline: none;
+    border-color: #14b8a6;
+}
+
+.filters input {
+    flex: 1;
+    min-width: 180px;
+    padding: 12px 15px;
+    border: 2px solid #14b8a6;
+    border-radius: 10px;
+    font-size: 1em;
+    background: white;
+}
+
+.filters input:focus {
+    outline: none;
+    border-color: #0d9488;
+}
+
+.resultats {
+    margin-top: 20px;
+}
+
+.lieu-card {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid #2dd4bf;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lieu-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.lieu-card h3 {
+    color: #14b8a6;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.lieu-card .ville {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}
+
+.lieu-card .infos {
+    white-space: pre-line;
+    color: #444;
+    line-height: 1.6;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.lieu-card .actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-modifier {
+    padding: 8px 15px;
+    background: #FFC107;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+
+.btn-modifier:hover {
+    background: #e0a800;
+}
+
+.btn-supprimer {
+    padding: 8px 15px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+
+.btn-supprimer:hover {
+    background: #c82333;
+}
+
+h2 {
+    color: #14b8a6;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #333;
+    margin: 25px 0 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #14b8a6;
+}
+
+.btn-primary {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #5eead4 0%, #2dd4bf 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    padding: 12px 25px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.message {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.success {
+    color: #28a745;
+    padding: 10px;
+    background: #d4edda;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+}
+
+.no-results {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.admin-login {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.admin-login .form-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.admin-login input {
+    width: auto;
+    min-width: 200px;
+}
+
+.demande-suppression {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px dashed #eee;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.6em;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab {
+        min-width: 100%;
+    }
+    
+    .search-box {
+        flex-direction: column;
+    }
+    
+    .filters {
+        flex-direction: column;
+    }
+    
+    .lieu-card .actions {
+        flex-direction: column;
+    }
+    
+    .lieu-card .actions button {
+        width: 100%;
+    }
+}
