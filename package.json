@@ -1,0 +1,15 @@
+{
+  "name": "annuaire-stages",
+  "version": "1.0.0",
+  "description": "Annuaire des lieux de stage - Imagerie Médicale",
+  "main": "api/lieux.js",
+  "scripts": {
+    "start": "node api/lieux.js"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "serve": "^14.2.5"
+  }
+}
