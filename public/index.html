@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📇 Annuaire des Stages - Imagerie Médicale</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📇 Annuaire des Stages</h1>
+            <p class="subtitle">Imagerie Médicale - Contacts des Cadres</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="recherche">🔍 Rechercher</button>
+            <button class="tab" data-tab="ajouter">➕ Ajouter</button>
+            <button class="tab" data-tab="admin">🔐 Admin</button>
+        </nav>
+
+        <!-- Onglet Recherche -->
+        <section id="recherche" class="tab-content active">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Rechercher par ville, établissement, cadre, modalité...">
+                <button id="searchBtn">🔍 Rechercher</button>
+            </div>
+            
+            <div class="filters">
+                <select id="filterVille">
+                    <option value="">Toutes les villes</option>
+                </select>
+                <select id="filterModalite">
+                    <option value="">Toutes les modalités</option>
+                    <option value="☢️">☢️ Médecine Nucléaire</option>
+                    <option value="💥">💥 Radiothérapie</option>
+                    <option value="🩻">🩻 Conventionnelle</option>
+                    <option value="🌀">🌀 Scanner</option>
+                    <option value="🧲">🧲 IRM</option>
+                    <option value="🫀">🫀 Interventionnelle</option>
+                    <option value="🦇">🦇 Échographie</option>
+                    <option value="custom">📝 Autre...</option>
+                </select>
+                <input type="text" id="customModalite" placeholder="Saisir une modalité..." style="display: none;">
+            </div>
+
+            <div id="resultats" class="resultats">
+                <p class="loading">Chargement de l'annuaire...</p>
+            </div>
+        </section>
+
+        <!-- Onglet Ajouter -->
+        <section id="ajouter" class="tab-content">
+            <h2>➕ Ajouter un lieu de stage</h2>
+            <form id="formAjouter">
+                <div class="form-group">
+                    <label for="ville">📍 Ville *</label>
+                    <input type="text" id="ville" required placeholder="Ex: Bordeaux, Paris, Bastia...">
+                </div>
+                <div class="form-group">
+                    <label for="nomLieu">🏥 Nom de l'établissement *</label>
+                    <input type="text" id="nomLieu" required placeholder="Ex: CHU Bordeaux, Clinique Maymard...">
+                </div>
+                <div class="form-group">
+                    <label for="modalites">🎯 Modalités</label>
+                    <input type="text" id="modalites" placeholder="Ex: ☢️ Médecine Nucléaire, 💥 Radiothérapie...">
+                </div>
+                <div class="form-group">
+                    <label for="contact">👔 Contact (Cadre / Responsable)</label>
+                    <input type="text" id="contact" placeholder="Ex: M. Dupont, Mme Martin...">
+                </div>
+                <div class="form-group">
+                    <label for="telephone">📞 Téléphone</label>
+                    <input type="tel" id="telephone" placeholder="Ex: 04 XX XX XX XX">
+                </div>
+                <div class="form-group">
+                    <label for="email">📧 Email</label>
+                    <input type="email" id="email" placeholder="Ex: contact@etablissement.fr">
+                </div>
+                <div class="form-group">
+                    <label for="tuteurs">👨‍⚕️ Tuteurs (optionnel)</label>
+                    <textarea id="tuteurs" rows="2" placeholder="Ex: Dr Santini (Médecine Nucléaire), Dr Martin (Radiothérapie)..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">✅ Ajouter à l'annuaire</button>
+            </form>
+            <div id="messageAjout" class="message"></div>
+        </section>
+
+        <!-- Onglet Admin -->
+        <section id="admin" class="tab-content">
+            <h2>🔐 Zone Administrateur</h2>
+            <div class="admin-login" id="adminLogin">
+                <p>Entrez le code admin pour accéder à la suppression :</p>
+                <div class="form-group">
+                    <input type="password" id="adminCode" placeholder="Code admin...">
+                    <button id="adminLoginBtn" class="btn-primary">🔓 Connexion</button>
+                </div>
+                <div id="adminError" class="error"></div>
+            </div>
+
+            <div class="admin-panel" id="adminPanel" style="display: none;">
+                <p class="success">✅ Connecté en tant qu'administrateur</p>
+                
+                <h3>📩 Demandes de suppression en attente</h3>
+                <div id="listeDemandesSupp" class="resultats"></div>
+                
+                <h3>🗑️ Supprimer un lieu</h3>
+                <div id="listeSupprimer" class="resultats"></div>
+            </div>
+
+            <div class="demande-suppression">
+                <h3>📩 Demander une suppression</h3>
+                <p>Vous avez trouvé une erreur ? Signalez-la ici :</p>
+                <form id="formDemandeSuppression">
+                    <div class="form-group">
+                        <label for="lieuSignale">Lieu concerné</label>
+                        <input type="text" id="lieuSignale" required placeholder="Ex: CHU Bordeaux">
+                    </div>
+                    <div class="form-group">
+                        <label for="raisonSuppression">Raison de la demande</label>
+                        <textarea id="raisonSuppression" rows="3" required placeholder="Expliquez pourquoi ce lieu devrait être modifié ou supprimé..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-secondary">📩 Envoyer la demande</button>
+                </form>
+                <div id="messageDemandeSupp" class="message"></div>
+            </div>
+        </section>
+
+        <!-- Modal Modifier -->
+        <div id="modalModifier" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>✏️ Modifier le lieu</h2>
+                <form id="formModifier">
+                    <input type="hidden" id="modifierId">
+                    <div class="form-group">
+                        <label for="modifierVille">📍 Ville</label>
+                        <input type="text" id="modifierVille" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modifierNomLieu">🏥 Établissement</label>
+                        <input type="text" id="modifierNomLieu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modifierInfos">📋 Informations</label>
+                        <textarea id="modifierInfos" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">💾 Enregistrer</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <p>Annuaire collaboratif - Imagerie Médicale</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
